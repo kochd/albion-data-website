@@ -15,6 +15,7 @@ nav_order: 20
 - [Swagger documentation available here](https://old.west.albion-online-data.com/api/swagger).
 - Item IDs can be found in the [formatted metadata](https://github.com/ao-data/ao-bin-dumps/tree/master/formatted) items.txt or items.json files.
 - Location IDs or String Names can be found in the [formatted metadata](https://github.com/ao-data/ao-bin-dumps/tree/master/formatted) world.txt or world.json files.
+- Supported date formats are `YYYY-MM-DD` (prefered) and `MM-DD-YYYY`
 
 For any of the following URLs, `.json` is optional and is the default. For XML, replace `.json` with `.xml`.
 
