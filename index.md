@@ -62,7 +62,7 @@ Note: Duplicate Messages - As information comes into the NATS Server it is looke
 
 Note: Timestamp on Market History data is in Ticks. To convert ticks to epoch (a more common time format), you would do the following:
 `(638181504000000000 - 621355968000000000) / 10000000)` which in this example is `1681257600`. Using [https://www.unixtimestamp.com/](https://www.unixtimestamp.com/)
-to convert `1681257600000` to a human readable format results in `Wed Apr 12 2023 00:00:00 GMT+0000`. This should be enough
+to convert `1681257600` to a human readable format results in `Wed Apr 12 2023 00:00:00 GMT+0000`. This should be enough
 info to get you going in the programming/scripting language of your choosing to convert the timestamp to something usable.
 
 New people connecting to the network may have missed previous messages. Along with that however we don’t have a good way
