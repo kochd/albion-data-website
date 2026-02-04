@@ -54,22 +54,31 @@ Albion Data Project here are some things you will need to know:
   - `goldprices.deduped` (deduped gold prices that come in from data clients, read below about duplicate messages)
   - `marketorders.deduped` (deduped orders prices that come in from data clients, read below about duplicate messages)
   - `markethistories.deduped` (deduped histories prices that come in from data clients, read below about duplicate messages)
+  - `banditevent.ingest` (notifications about [bandit event](https://www.albion-online-data.com/#bandit-event))
 - Structure of data messages: [albiondata-client/lib](https://github.com/ao-data/albiondata-client/tree/master/lib)
 
 Note: Duplicate Messages - As information comes into the NATS Server it is looked at and deduplicated over a 10 minute
  window. As a subscriber the goal is that you should only get the same message once every 5 minutes. This is of course 
  open for change as we go however. The reason we are sending the same message at all is two fold.
 
-Note: Timestamp on Market History data is in Ticks. To convert ticks to epoch (a more common time format), you would do the following:
-`(638181504000000000 - 621355968000000000) / 10000000` which in this example is `1682553600`. Using [https://www.unixtimestamp.com/](https://www.unixtimestamp.com/)
-to convert `1682553600` to a human readable format results in `2023-04-27 00:00:00 UTC`. This should be enough
-info to get you going in the programming/scripting language of your choosing to convert the timestamp to something usable.
-
 New people connecting to the network may have missed previous messages. Along with that however we don’t have a good way
  of noticing things like market orders completing. To remove market orders from your application the current best idea 
  around is to keep track of the last time an order was seen, and then after not seeing it for X hours remove it has 
  probably having been completed.
 
+ ## Timestamps
+Note: Timestamps on Market History data and Bandit Event is in Ticks. To convert ticks to epoch (a more common time format), you would do the following:
+`(638181504000000000 - 621355968000000000) / 10000000` which in this example is `1682553600`. Using [https://www.unixtimestamp.com/](https://www.unixtimestamp.com/)
+to convert `1682553600` to a human readable format results in `2023-04-27 00:00:00 UTC`. This should be enough
+info to get you going in the programming/scripting language of your choosing to convert the timestamp to something usable.
+
+ ## Bandit Event
+ * Message schema: `{"EventTime"=>639057896373527168, "AdvanceNotice"=>true}`
+ * AdvanceNotice true means that the event has not started yet.
+ * If it's an AdvanceNotice the EventTime will be the time of when the event starts.
+ * If it's NOT an AdvanceNotice the EventTime will be the time of when the event ends.
+ * EventTime is represented in "C# ticks" (see: [Timestamps](https://www.albion-online-data.com/#timestamps))
+ 
 ## Database Table Exports
 
 You can find daily table dumps on the server at following locations:
