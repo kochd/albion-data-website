@@ -67,7 +67,7 @@ New people connecting to the network may have missed previous messages. Along wi
  probably having been completed.
 
  ## Timestamps
-Note: Timestamps on Market History data and Bandit Event is in Ticks. To convert ticks to epoch (a more common time format), you would do the following:
+Note: Timestamps on Market History data and Bandit Event is in Ticks. To convert `638181504000000000` ticks to epoch (a more common time format), you would do the following:
 `(638181504000000000 - 621355968000000000) / 10000000` which in this example is `1682553600`. Using [https://www.unixtimestamp.com/](https://www.unixtimestamp.com/)
 to convert `1682553600` to a human readable format results in `2023-04-27 00:00:00 UTC`. This should be enough
 info to get you going in the programming/scripting language of your choosing to convert the timestamp to something usable.
